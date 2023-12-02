@@ -18,16 +18,15 @@ with open('inputs/day2.txt', 'r') as file:
         }
         line = line.split(" ")
         id = int(line[1][:len(line[1])-1])
-        valid = True
+        possible = True
+        
         for i in range(2, len(line), 2):
             color = line[i+1].replace(',', '').replace(';', '').replace('\n', '')
             numberUsed = int(line[i])
-            if numberUsed > numberAvailable[color]:
-                valid = False
-            if minimumNeeded[color] < numberUsed:
-                minimumNeeded[color] = numberUsed
+            possible = possible and numberUsed <= numberAvailable[color]
+            minimumNeeded[color] = max(numberUsed, minimumNeeded[color])
 
-        part1 += valid * id
+        part1 += possible * id
 
         power = 1
         for i in minimumNeeded:
@@ -39,8 +38,8 @@ with open('inputs/day2.txt', 'r') as file:
 
 
 
-'''
-If easier to read, below they are separated -----------------------------
+
+#If easier to read, below they are separated -----------------------------
 #Part 1
 numberAvailable = {
     'red': 12,
@@ -49,20 +48,25 @@ numberAvailable = {
 }
 with open('inputs/day2.txt', 'r') as file:
     result = 0
+
     for line in file:
         line = line.split(" ")
         id = int(line[1][:len(line[1])-1])
-        valid = True
+        possible = True
+
         for i in range(2, len(line), 2):
             color = line[i+1].replace(',', '').replace(';', '').replace('\n', '')
             numberUsed = int(line[i])
-            if numberUsed > numberAvailable[color]:
-                valid = False
-        result += valid * id
+            possible = possible and numberUsed <= numberAvailable[color]
+
+        result += possible * id
+
     print('Part 1: ', result)
+
 #Part 2
 with open('inputs/day2.txt', 'r') as file:
     result = 0
+    
     for line in file:
         minimumNeeded = {
             'red': 0,
@@ -71,15 +75,15 @@ with open('inputs/day2.txt', 'r') as file:
         }
         line = line.split(" ")
         id = int(line[1][:len(line[1])-1])
+        
         for i in range(2, len(line), 2):
             color = line[i+1].replace(',', '').replace(';', '').replace('\n', '')
             numberUsed = int(line[i])
-            if minimumNeeded[color] < numberUsed:
-                minimumNeeded[color] = numberUsed
+            minimumNeeded[color] = max(numberUsed, minimumNeeded[color])
         
         power = 1
         for i in minimumNeeded:
             power *= minimumNeeded[i]
         result += power
+
     print('Part 2: ', result)
-'''
