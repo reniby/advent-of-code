@@ -33,7 +33,7 @@ with open('inputs/day1.txt', 'r') as file:
                 nums += line[char]
                 currStr = ''
             else:
-                for i in ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'zero']:
+                for i in hm:
                     if i in currStr:
                         nums += hm[i]
                         currStr = currStr[len(currStr)-len(i):]
