@@ -38,8 +38,9 @@ with open('inputs/day2.txt', 'r') as file:
 
 
 
+'''
+#If easier to read, below they are separated
 
-#If easier to read, below they are separated -----------------------------
 #Part 1
 numberAvailable = {
     'red': 12,
@@ -62,6 +63,7 @@ with open('inputs/day2.txt', 'r') as file:
         result += possible * id
 
     print('Part 1: ', result)
+
 
 #Part 2
 with open('inputs/day2.txt', 'r') as file:
@@ -87,3 +89,4 @@ with open('inputs/day2.txt', 'r') as file:
         result += power
 
     print('Part 2: ', result)
+'''
