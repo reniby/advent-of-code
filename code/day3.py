@@ -32,7 +32,7 @@ with open('inputs/day3.txt', 'r') as file:
             i = coordinate[0] - 1
             while i < coordinate[0] + 2:
                 for j in range(coordinate[1] - 1, coordinate[1] + len(number) + 1):
-                    if (i, j) in symbols:
+                    if i >= 0 and j >= 0 and i < line_count and j < line_count and (i, j) in symbols:
                         part1 += int(number)
                         symbols[(i, j)].append(int(number))
                         i = coordinate[0] + 2
