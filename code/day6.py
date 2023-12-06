@@ -39,7 +39,6 @@ with open('inputs/day6.txt', 'r') as file:
         line = line.replace('\n', '').replace(' ','').split(':')
         vals.append(line[1])
 
-print(vals)
 currTime = int(vals[0])
 currDistance = int(vals[1])
 result = 0
